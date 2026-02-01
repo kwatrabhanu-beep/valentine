@@ -68,37 +68,32 @@ img {
 </div>
 
 <script>
-const noButton = document.getElementById("no");
-const yesButton = document.getElementById("yes");
-const gifDiv = document.getElementById("gif");
-const bgMusic = document.getElementById("bgMusic");
-const introGif = document.getElementById("introGif");
-const extraGif = document.getElementById("extraGif");
-  
-noButton.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noButton.style.left = x + "px";
-  noButton.style.top = y + "px";
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-esButton.addEventListener("click", () => {
-  gifDiv.style.display = "block";
-  introGif.style.display = "none";
+  const noButton = document.getElementById("no");
+  const yesButton = document.getElementById("yes");
+  const gifDiv = document.getElementById("gif");
+  const bgMusic = document.getElementById("bgMusic");
 
-  bgMusic.play().catch(err => {
-    console.log("Music play blocked:", err);
+  // Move "No" button on hover
+  noButton.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noButton.style.left = x + "px";
+    noButton.style.top = y + "px";
   });
 
-  setTimeout(() => {
-    extraGif.style.display = "block";
-  }, 1200);
-});
+  // On Yes click
+  yesButton.addEventListener("click", () => {
+    gifDiv.style.display = "block";
 
-  setTimeout(() => {
-    extraGif.style.display = "block";
-  }, 1200);
-}); 
+    if (bgMusic) {
+      bgMusic.currentTime = 0;
+      bgMusic.play().catch(err => console.log(err));
+    }
+  });
+
+});
 </script>
 <audio id="bgMusic" preload="auto" loop>
   <source src="/valentine/love.mp3" type="audio/mpeg">

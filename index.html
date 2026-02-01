@@ -82,12 +82,20 @@ noButton.addEventListener("mouseover", () => {
 
 yesButton.addEventListener("click", () => {
   gifDiv.style.display = "block";
+  introGif.style.display = "none";
+
+  // play music
   bgMusic.play().catch(err => {
     console.log("Music play blocked:", err);
-});
+  });
+
+  setTimeout(() => {
+    extraGif.style.display = "block";
+  }, 1200);
+}); 
 </script>
 <audio id="bgMusic" loop>
-  <source src="love.mp3" type="audio/mpeg">
+  <source src="love.mp3" type="audio/mp3">
 </audio>
 </body>
 </html>

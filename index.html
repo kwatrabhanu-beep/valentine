@@ -82,11 +82,10 @@ noButton.addEventListener("mouseover", () => {
   noButton.style.top = y + "px";
 });
 
-yesButton.addEventListener("click", () => {
+esButton.addEventListener("click", () => {
   gifDiv.style.display = "block";
   introGif.style.display = "none";
 
-  bgMusic.currentTime = 0; // 👈 ADD THIS
   bgMusic.play().catch(err => {
     console.log("Music play blocked:", err);
   });
